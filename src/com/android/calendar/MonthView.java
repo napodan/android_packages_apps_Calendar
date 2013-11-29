@@ -288,7 +288,8 @@ public class MonthView extends View implements View.OnCreateContextMenuListener 
             ta.recycle();
         }
 
-        mGestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
+        mGestureDetector = new GestureDetector(getContext(),
+                new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                     float velocityY) {
@@ -437,14 +438,15 @@ public class MonthView extends View implements View.OnCreateContextMenuListener 
                 }
                 case MenuHelper.MENU_AGENDA: {
                     long startMillis = getSelectedTimeInMillis();
-                    Utils.startActivity(mParentActivity, AgendaActivity.class.getName(), startMillis);
+                    Utils.startActivity(mParentActivity, AgendaActivity.class.getName(),
+                            startMillis);
                     break;
                 }
                 case MenuHelper.MENU_EVENT_CREATE: {
                     long startMillis = getSelectedTimeInMillis();
                     long endMillis = startMillis + DateUtils.HOUR_IN_MILLIS;
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setClassName(mParentActivity, EditEvent.class.getName());
+                    intent.setClassName(mParentActivity, EditEventActivity.class.getName());
                     intent.putExtra(EVENT_BEGIN_TIME, startMillis);
                     intent.putExtra(EVENT_END_TIME, endMillis);
                     mParentActivity.startActivity(intent);
