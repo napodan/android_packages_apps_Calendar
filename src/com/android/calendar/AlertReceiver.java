@@ -163,7 +163,6 @@ public class AlertReceiver extends BroadcastReceiver {
         notification.deleteIntent = PendingIntent.getBroadcast(context, 0,
                 deleteIntent, 0);
         if (highPriority) {
-            notification.flags |= Notification.FLAG_HIGH_PRIORITY;
             notification.fullScreenIntent = pendingClickIntent;
         }
 
